@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api-service-app
-          image: acr017h3w873rnwuqwuh.azurecr.io/api:latest
+          image: sk09devops/ai-project:latest-14
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

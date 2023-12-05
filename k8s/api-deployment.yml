@@ -4,6 +4,7 @@ metadata:
   name: api-service-app
   namespace: ai-project  # Ensure namespace matches ArgoCD Application configuration
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: api-service-app
@@ -14,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api-service-app
-          image: sk09devops/ai-project:latest-14
+          image: sk09devops/ai-project:latest-5
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -27,6 +28,7 @@ metadata:
   name: api-service-svc
   namespace: ai-project  # Ensure namespace matches ArgoCD Application configuration
 spec:
+  
   type: LoadBalancer
   selector:
     app: api-service-app

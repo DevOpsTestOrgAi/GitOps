@@ -29,7 +29,7 @@ metadata:
   namespace: ai-project  # Ensure namespace matches ArgoCD Application configuration
 spec:
   
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: api-service-app
   ports:

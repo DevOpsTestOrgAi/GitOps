@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-service-app
-  namespace: ai-project  # Ensure namespace matches ArgoCD Application configuration
+  name: scrapper-service-app
+  namespace: ai-project 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: api-service-app
+      app: scrapper-service-app
   template:
     metadata:
       labels:
-        app: api-service-app
+        app: scrapper-service-app
     spec:
       containers:
-        - name: api-service-app
-          image: sk09devops/ai-project:latest-19
+        - name: scrapper-service-app
+          image: sk09devops/scrapper-api:latest-19
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -25,12 +25,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: api-service-svc
+  name: scrapper-service-svc
   namespace: ai-project 
   
   type: ClusterIP
   selector:
-    app: api-service-app
+    app: scrapper-service-app
   ports:
     - port: 80
       targetPort: 8080
@@ -38,7 +38,7 @@ metadata:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: api-ingress
+  name: scrapper-ingress
   namespace: ai-project
   annotations:
     kubernetes.io/ingress.class: nginx 
@@ -48,11 +48,11 @@ spec:
   - host: aiextension.westus2.cloudapp.azure.com  
     http:
       paths:
-      - path: /api
+      - path: /scrapper
         pathType: Prefix
         backend:
           service:
-            name: api-service-svc 
+            name: scrapper-service-svc 
             port:
               number: 80
  

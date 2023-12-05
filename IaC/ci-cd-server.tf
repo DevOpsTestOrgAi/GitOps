@@ -50,7 +50,7 @@ resource "azurerm_network_security_rule" "allow_8080" {
 }
 resource "azurerm_network_security_rule" "allow_22" {
   name                        = "Allow_TCP_22"
-  priority                    = 1002
+  priority                    = 1004
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
@@ -118,6 +118,6 @@ resource "azurerm_virtual_machine" "ci_cd_vm" {
   }
 
   tags = {
-    environment = "production"
+    environment = "Staging"
   }
 }

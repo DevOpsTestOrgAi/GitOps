@@ -38,11 +38,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: scrapper-service-svc
+  name: api-service-svc
   namespace: ai-project
 spec:
   selector:
-    app: scrapper-service-app
+    app: api-service-app
   ports:
     - protocol: TCP
       port: 80

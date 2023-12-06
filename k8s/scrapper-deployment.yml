@@ -47,14 +47,14 @@ spec:
   - host: aiextension.westus2.cloudapp.azure.com  
     http:
       paths:
-      - path: /scraper
+      - path: /
         pathType: Prefix
         backend:
           service:
             name: scrapper-service-svc 
             port:
               number: 80
-      - path: /searcher
+      - path: /
         pathType: Prefix
         backend:
           service:

@@ -3,26 +3,23 @@ kind: Ingress
 metadata:
   name: ai-project-ingress
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
   - http:
       paths:
-      - path: /api-backend(/|$)(.*)
+      - path: /api-backend
         pathType: Prefix
         backend:
           service:
-            name: api-service-app
+            name: api-service-svc
             port:
               number: 80
-      - path: /scrapper-backend(/|$)(.*)
+      - path: /scrapper-backend
         pathType: Prefix
         backend:
           service:
-            name: scrapper-service-app
+            name: scrapper-service-svc
             port:
               number: 80
-

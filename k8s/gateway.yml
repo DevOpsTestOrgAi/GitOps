@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api-service-app
-          image: sk09devops/cloud-gateway:latest
+          image: sk09devops/cloud-gateway:latest-2
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

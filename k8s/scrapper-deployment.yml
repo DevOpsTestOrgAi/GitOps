@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: scrapper-service-app
-          image: sk09devops/scrapper-api:latest
+          image: sk09devops/scrapper-api:latest-16
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

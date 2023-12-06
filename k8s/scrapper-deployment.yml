@@ -51,7 +51,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: scrapper-service-svc 
+            name: scrapper-service-svc
             port:
               number: 80
  

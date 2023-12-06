@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: cloud-gateway-app
-          image: sk09devops/cloud-gateway:latest
+          image: sk09devops/cloud-gateway:latest-3
 
           ports:
             - containerPort: 9090

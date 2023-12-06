@@ -48,7 +48,7 @@ spec:
   - host: aiextension.westus2.cloudapp.azure.com  
     http:
       paths:
-      - path: /ouali
+      - path: /
         pathType: Prefix
         backend:
           service:

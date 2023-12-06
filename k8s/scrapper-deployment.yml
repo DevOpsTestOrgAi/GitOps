@@ -47,7 +47,7 @@ spec:
   - host: aiextension.westus2.cloudapp.azure.com  
     http:
       paths:
-      - path: /
+      - path: /sc
         pathType: Prefix
         backend:
           service:

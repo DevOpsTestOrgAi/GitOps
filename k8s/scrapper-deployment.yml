@@ -41,19 +41,16 @@ metadata:
   namespace: ai-project
   annotations:
     kubernetes.io/ingress.class: nginx 
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    
 spec:
   rules:
   - host: aiextension.westus2.cloudapp.azure.com  
     http:
       paths:
-      - path: /scarpper-backend(/|$)(.*)
-        pathType: Prefix
+      - path: /scarp/
+        pathType: ImplementationSpecific
         backend:
           service:
             name: scrapper-service-svc
             port:
               number: 80
- 

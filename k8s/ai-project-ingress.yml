@@ -14,13 +14,13 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: api-service-app
+            name: api-service-svc
             port:
               number: 80
       - path: /scrapper-backend
         pathType: Prefix
         backend:
           service:
-            name: scrapper-service-app
+            name: scrapper-service-svc
             port:
               number: 80

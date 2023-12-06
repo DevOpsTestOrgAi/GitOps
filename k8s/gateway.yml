@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-service-app
+  name: cloud-gateway-service-app
   namespace: ai-project  # Ensure namespace matches ArgoCD Application configuration
 spec:
   replicas: 1
@@ -14,7 +14,7 @@ spec:
         app: cloud-gateway-service-app
     spec:
       containers:
-        - name: api-service-app
+        - name: cloud-gateway-service-app
           image: sk09devops/cloud-gateway:latest-2
           imagePullPolicy: Always
           ports:

@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: scrapper-service-app
+  name: scraper-service-app
   namespace: ai-project 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: scrapper-service-app
+      app: scraper-service-app
   template:
     metadata:
       labels:
-        app: scrapper-service-app
+        app: scraper-service-app
     spec:
       containers:
         - name: scrapper-service-app
@@ -24,11 +24,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: scrapper-service-svc
+  name: scraper-service-svc
   namespace: ai-project
 spec:
   selector:
-    app: scrapper-service-app
+    app: scraper-service-app
   ports:
     - protocol: TCP
       port: 80
@@ -37,7 +37,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ai-project-ingress
+  name: scraper-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -50,6 +50,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: scrapper-service-svc
+            name: scraper-service-svc
             port:
               number: 80

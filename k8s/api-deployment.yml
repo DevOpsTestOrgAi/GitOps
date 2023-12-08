@@ -33,24 +33,3 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: api-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  ingressClassName: nginx
-  rules:
-  - host: aiextension.westus2.cloudapp.azure.com
-    http:
-      paths:
-      
-      - path: /api/v1/suggestions
-        pathType: Prefix
-        backend:
-          service:
-            name: api-service-svc
-            port:
-              number: 80

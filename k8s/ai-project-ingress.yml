@@ -17,3 +17,19 @@ spec:
             name: scrapper-service-svc
             port:
               number: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service-svc
+            port:
+              number: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ai-model-service-svc
+            port:
+              number: 80
+
+

@@ -2,8 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-service-app
-  namespace: ai-project  # Ensure namespace matches ArgoCD Application configuration
-spec:
+  namespace: ai-project  
   replicas: 1
   selector:
     matchLabels:

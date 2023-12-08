@@ -47,7 +47,7 @@ spec:
     http:
       paths:
       
-      - path: /
+      - path: /api/v1/suggestions
         pathType: Prefix
         backend:
           service:

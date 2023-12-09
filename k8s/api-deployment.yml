@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: api-service-app
-          image: sk09devops/ai-project:latest-35
+          image: sk09devops/ai-project:latest-36
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

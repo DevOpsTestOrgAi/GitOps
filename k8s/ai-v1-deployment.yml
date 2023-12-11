@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ai-v1-model-app
-          image: sk09devops/ai-v1:latest-29
+          image: sk09devops/ai-v1:latest-30
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

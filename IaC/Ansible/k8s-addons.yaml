@@ -1,0 +1,40 @@
+---
+- name: Deploy Prometheus and Grafana in Monitoring Namespace
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Create monitoring namespace
+      command: kubectl create namespace monitoring
+
+    - name: Add Prometheus Community Helm Chart Repository
+      command: helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+    - name: Install Prometheus in monitoring namespace
+      command: helm install prometheus prometheus-community/prometheus -n monitoring
+
+    - name: Wait for Prometheus Pods to be Ready
+      command: kubectl wait --for=condition=Ready pods --all -n monitoring --timeout=300s
+
+    - name: Add Grafana Community Helm Chart Repository
+      command: helm repo add grafana https://grafana.github.io/helm-charts
+
+    - name: Install Grafana in monitoring namespace
+      command: helm install grafana grafana/grafana -n monitoring
+
+    - name: Wait for Grafana Pods to be Ready
+      command: kubectl wait --for=condition=Ready pods --all -n monitoring --timeout=300s
+
+    - name: Expose Prometheus via NodePort in monitoring namespace
+      command: kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-np -n monitoring
+
+    - name: Expose Grafana via NodePort in monitoring namespace
+      command: kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-np -n monitoring
+
+    - name: Get Prometheus NodePort in monitoring namespace
+      command: kubectl get svc prometheus-server-np -o jsonpath='{.spec.ports[0].nodePort}' -n monitoring
+      register: prometheus_nodeport
+
+    - name: Get Grafana NodePort in monitoring namespace
+      command: kubectl get svc grafana-np -o jsonpath='{.spec.ports[0].nodePort}' -n monitoring
+      register: grafana_nodeport

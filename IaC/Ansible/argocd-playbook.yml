@@ -1,0 +1,14 @@
+---
+- name: SetUp and  configure  ArgoCD
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: SetUp ArgoCD 
+      command: kubectl create namespace argocd
+    
+    - name: Apply ArgoCD Manifest 
+      command: kubectl apply -n argcd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+    - name: Apply ArgoCD application config for ai-project
+      command: kubectl apply -f "{{ playbook_dir }}/argo-config.yml" -n argocd

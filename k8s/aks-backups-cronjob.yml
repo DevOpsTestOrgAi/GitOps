@@ -1,10 +1,10 @@
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: weekly-backup
-  namespace: ai-project  
+  namespace: ai-project
 spec:
-  schedule: "0 0 * * 0"  
+  schedule: "0 0 * * 0"  # Run at midnight on Sundays
   jobTemplate:
     spec:
       template:

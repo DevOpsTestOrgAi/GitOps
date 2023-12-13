@@ -1,0 +1,25 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: weekly-backup
+  namespace: ai-project  
+spec:
+  schedule: "0 0 * * 0"  
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: backup-container
+            image: your-backup-image:latest
+            env:
+              - name: AZURE_STORAGE_ACCOUNT_NAME
+                value: aistoragegitops
+              - name: AZURE_STORAGE_CONTAINER_NAME
+                value: aksbackupcontainer
+              - name: AZURE_STORAGE_ACCESS_KEY
+                valueFrom:
+                  secretKeyRef:
+                    name: azure-storage-secret
+                    key: storage-access-key
+          restartPolicy: Never

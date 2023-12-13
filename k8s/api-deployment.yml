@@ -29,7 +29,6 @@ spec:
 
 ---
 
-# Service
 apiVersion: v1
 kind: Service
 metadata:
@@ -42,4 +41,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-  type: LoadBalancer  # Expose the service outside the cluster
+  type: LoadBalancer 
